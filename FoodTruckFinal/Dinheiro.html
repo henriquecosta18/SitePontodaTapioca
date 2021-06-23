@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+	<head>		
+		<title> Forma de Pagamento </title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="grid.css">
+		<link rel="stylesheet" href="grid.css">
+		<link rel="stylesheet" href="grid.css">
+		<style type="text/css">
+			body {
+				font-family:Arial, sans-serif;
+			}
+
+			img {
+				-moz-transform: all 0.4s;
+				-webkit-transform: all 0.4s;
+				transition: all 0.4s;
+			}
+
+			img:hover {
+				-moz-transform: scale(0.1);
+				-webkit-transform: scale(0.1);
+				transform: scale(0.9);
+			}
+
+			/* Cabeçalho */
+			.cabeçalho {
+				width: 100%;
+				padding: 10px;
+				background: #ECECEC;
+				box-shadow: 0 0 8px rgba(0,0,0,0.2);
+				top: 0;
+				z-index: 99;
+				position: fixed;
+			    display: table-cell;
+			    text-align: center;
+			}
+
+			.icones {
+				float: right;
+				margin-top: 40px;
+				margin-right: 20px;
+			}
+
+			li {
+				display: inline-flex;
+				float: left;
+			}			
+
+			input.botao { /* Botão do cardapio */
+				background-color: #C56B34;
+	       		border: 1px solid transparent;
+        		color: #fff;
+          		border-radius: 20px;
+          		height: 30px;
+          		width: 70px;	      
+			}
+
+			.botao:hover {
+			    transition: 0.5s all;
+			    box-shadow: 1px 1px 10px 1px black;				
+			}					
+			
+			/* Rodapé */
+			.rodape {
+				width: 100%;
+				padding: 10px;
+				background: #ECECEC;
+				box-shadow: 0 0 8px rgba(0,0,0,0.2);
+				display: flex;
+				justify-content: space-around;				
+			}			
+
+			img.whatsapp {
+			    display: flex;
+			}
+
+			table.tel { 
+				border: 2px solid transparent;
+			    display: flex;			
+			}
+
+			/* Direitos */
+			.direitos {
+				text-align: center;
+				background: #ECECEC;
+				width: 100%;
+				padding: 10px;				
+			}
+
+			/* forma de pagamento */
+			*{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			.fundo {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-top: 150px;				
+			}
+
+			h2 {
+				font-size: 30px;
+				margin-bottom: 30px;
+			}
+
+			.container {
+				width: 550px;
+				padding: 50px 20px;
+			}
+
+			.tb_imagem {
+				width: 100%;
+				margin-bottom: 30px;				
+			}
+
+			.tb_imagem td {
+				text-align: center;
+			}
+
+			.imagem {
+	       		border: 2px solid transparent;
+          		border-radius: 50px; 
+          		border: 3px solid;
+          		color: #C56B34;      		
+			}
+
+			.campos {
+				border: none;
+				outline: none;
+				font-size: 16px;
+				border-bottom: 1px solid;
+				transition: .25s ease-in-out;
+			}
+
+			.campo:focus{
+				border-bottom: 2px solid;
+				box-shadow: 0 1px 0 0;
+			}
+
+			.campos:focus + label {
+				transform: translateY(14px);
+				font-weight: bold;
+			}
+
+			.campos:not(:placeholder-shown) + label {
+				transform: translateY(14px);
+				font-weight: bold;
+			}
+
+			.campos:not(:placeholder-shown) {
+				border-bottom: 1px solid;
+				box-shadow: 0 1px 0 0;
+			}
+
+			.campos::placeholder{
+				color: transparent;
+			}
+
+			.input-field {
+				border: none;
+				display: flex;
+				align-items: center;
+			}
+
+			.input-field p {
+				margin-right: 15px;
+			}
+
+			.bt_confirmar {
+				padding: 10px 30px;
+				background: #C56B34;
+	       		border: 2px solid transparent;
+	       		border-radius: 20px;
+        		color: #fff;
+        		transition: all 0.4s;	
+			}
+
+			.bt_confirmar:hover {
+				transform: scale(0.9);
+			}
+
+			.botao_entrega {
+				margin-right: 170px;
+			}
+			
+			.bt_entrega {
+				padding: 10px 30px;
+				background: #C56B34;
+	       		border: 2px solid transparent;
+	       		border-radius: 20px;
+        		color: #fff;
+        		transition: all 0.4s;	
+			}
+
+			.bt_entrega:hover {
+				transform: scale(0.9);
+			}
+
+			.botões {
+				display: flex;
+				border: none;
+				margin-top: 35px;
+			}
+
+			input[type="file"] {
+			    display: none;
+			}
+
+			.arquivo {
+			    padding: 7px;
+			    width: 160px;
+			    background-color: #C56B34;
+			    color: #FFF;
+			    text-align: center;
+			    display: block;
+			    font-size: 15px;
+			    margin-bottom: 15px;
+			}
+
+			.texto {
+				margin-bottom: 15px;
+			}						
+
+		</style>
+	</head>
+
+	<body>
+		<header class="cabeçalho"> <!--cabeçalho-->
+			<a href="Pagina_inicial.html"> <img class="Logo" src="Rodapé_Cabeçalho/Logo.png" height="110" width="230"> </a>
+
+			<div class="icones">
+				<ul>
+					<li>
+						<form action="Cardapio.html">
+							<input class="botao" type="submit" value="Cardápio">
+						</form>
+					</li>
+
+					<li class="carrinho">
+						<a href="carrinho.php"> <img src="Rodapé_Cabeçalho/carrinho.png" height="28" width="28"> </a>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+		<div class="fundo">
+	    	<div class="container">					
+				<h2> Escolha uma forma de pagamento </h2>								               
+                <div class="imagens_pg">
+                	<table class="tb_imagem">
+                		<td>
+                			<div>
+                				<a href="Pagamento.html"> <img class="imagem" src="img_Forma_pagamentos/debito_credito.png" height="80px" width="80px"> </a>
+                				<p><b> Cartão </b></p>
+                			</div>
+                		</td>
+
+                		<td>
+                			<div>
+                				<a href="Pix.html"> <img class ="imagem" src="img_Forma_pagamentos/Pix.png" height="80px" width="80px"> </a>
+                				<p><b> PIX </b></p>
+                			</div>
+                		</td>
+
+                		<td>
+                			<div>
+                				<a href="Dinheiro.html"> <img class="imagem" src="img_Forma_pagamentos/money.png" height="80px" width="80px"> </a>
+                				<p><b> Dinheiro </b></p>
+                			</div>
+                		</td>              		                		
+                	</table>
+	        	</div>
+
+        	 	<div>                	
+					<p><b> Dinheiro </b></p> <br>
+					<p class="texto"> Precisa de troco? </p>
+                </div>
+
+				<form class="input-field">
+					<p> Digite o valor do troco: </p>				
+					<div>
+						<input class="campos" type="number" name="arquivo">
+					</div>				
+				</form> 	
+
+				<fieldset class="botões">
+					<form action="Pedido_finalizado.html">
+						<div class="botao_entrega">
+							<input class="bt_entrega" type="submit" value="PAGAR NA ENTREGA">
+						</div>														
+					</form>	
+
+					<form action="Pedido_finalizado.html">
+						<div class="botao_confirmar">
+							<input class="bt_confirmar" type="submit" value="CONFIRMAR">
+						</div>														
+					</form>
+				</fieldset>			
+			</div>
+		</div>	
+
+		<footer class="rodape"> <!-- rodapé -->
+				<article>
+					<b> Localização: </b>
+					<br>
+					Ponto Pinheiros - Próximo ao metrô Pinheiros
+					<br>
+					R. Cunha Gago, 590
+					<br><br>
+					<b> Horários de Funcionamento: </b>
+					<br>
+					Horário de Almoço:
+					<br>
+					Terça à Sexta das 12h às 14h30.
+					<br>
+					Sábados e Domingos das 13h às 16h.
+					<br><br>
+					Horário de Janta:
+					<br>
+					Terça à Sexta das 18h30 às 21h30
+					<br>
+					Sábados e Domingos das 18h30 às 21h30										
+				</article>
+
+				<article>
+					<img class="whatsapp" src="Rodapé_Cabeçalho/whatsapp.png" height="36" width="38" align="left">
+					<table class="tel">
+						<tr>  </tr>
+						<td> (11) 96528-9741 </td>
+					</table>
+					<br>
+					Tem alguma sugestão? Quer mandar seu
+					currículo?<br>
+					Envie para: ponto@pontodatapioca.com
+					<br><br>
+					Quer o Ponto da Tapioca no seu evento?
+					<br>
+					Escreve pra nós, em<br>
+					eventos@pontodatapioca.com
+				</article>	
+		</footer>
+
+		<article class="direitos">
+			<p> © copyright Ponto da Tapioca - all rights reserved - since 2021 </p>	
+		</article>
+					
+	</body>
+</html>

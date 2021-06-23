@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html>
+	<head>		
+		<title> Cardápio </title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="grid.css">
+		<link rel="stylesheet" href="grid.css">
+		<link rel="stylesheet" href="grid.css">		
+		<link rel="stylesheet" type="text/css" href="http//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">    
+ 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<style type="text/css">
+			body {
+				font-family:Arial, sans-serif;				
+			}
+
+			img {
+				-moz-transform: all 0.4s;
+				-webkit-transform: all 0.4s;
+				transition: all 0.4s;
+			}
+
+			img:hover {
+				-moz-transform: scale(0.1);
+				-webkit-transform: scale(0.1);
+				transform: scale(0.9);
+			}
+
+			/* Cabeçalho */
+			.cabeçalho {
+				width: 100%;
+				padding: 5px 20px;
+				background: #ECECEC;
+				box-shadow: 0 0 8px rgba(0,0,0,0.2);
+				top: 0;
+				left: 0;
+				z-index: 99;
+				position: fixed;
+			    display: table-cell;
+			    text-align: center;
+			}
+
+			.icones {
+				float: right;
+				margin-top: 20px;
+				margin-right: 20px;
+			}
+
+			li {
+				display: inline-flex;
+				float: left;				
+			}			
+
+			input.botao { /* Botão do cardapio */
+				background-color: #C56B34;
+	       		border: 1px solid transparent;
+        		color: #fff;
+          		border-radius: 20px;
+          		height: 30px;
+          		width: 70px;	      
+			}
+
+			.botao:hover {
+			    transition: 0.5s all;
+			    box-shadow: 1px 1px 10px 1px black;				
+			}					
+			
+			/* Rodapé */
+			.rodape {
+				width: 100%;
+				padding: 10px;
+				background: #ECECEC;
+				box-shadow: 0 0 8px rgba(0,0,0,0.2);
+				display: flex;
+				justify-content: space-around;				
+			}			
+
+			img.whatsapp {
+			    display: flex;
+			}
+
+			table.tel { 
+				border: 2px solid transparent;
+			    display: flex;			
+			}
+
+			/* Direitos */
+			.direitos {
+				text-align: center;
+				background: #ECECEC;
+				width: 100%;
+				padding: 10px;			
+			}
+
+			/* titulo da promoção */
+			.promoção_titulo {
+				margin-top: 150px;
+			    background-color: #702E16;
+				padding: 4px;
+				align-items: center;
+			}
+
+			.titulo {
+				width: 100%;
+				text-align: center;
+			}
+
+			.tx {
+				font-size: 26px;
+				color: #FECC06;
+				font-family: Bahnschrift SemiCondensed;
+				font-weight: bold;
+				text-transform: uppercase;										
+			}
+
+			/* Titulo das tapiocas salgadas, doces e monte sua tapioca */
+			.promoção_titulos {
+				margin-top: 50px;
+			    background-color: #702E16;
+				padding: 4px;
+				align-items: center;
+			}
+
+			.titulos{
+				width: 100%;
+				text-align: center;
+			}
+
+			.tx1 {
+				font-size: 24px;
+				color: #fff;
+				font-family: Bahnschrift SemiCondensed;
+				font-weight: bold;
+				text-transform: uppercase;																
+			}
+
+			/* Tapiocas na promoção */
+			.itens {
+				margin-top: 50px;
+			    margin-left: 165px;
+			    margin-right: 200px;
+				display: flex;
+				overflow-x: auto;
+				text-align: center;				
+			}
+
+			.itens img {
+				margin-left: 10px;
+				margin-right: 10px;
+			}
+
+			.txt {
+				text-align: center;
+				color: #fff;
+				background-color: black;
+	       		border: 1px solid transparent;
+          		border-radius: 25%;
+				margin-left: 10px;
+				margin-right: 10px;      						
+			}
+
+			/* Tapiocas Salgadas */
+			.tapiocas_salgadas table {
+			    width: 100%;
+			    text-align: center;
+			    margin-top: 50px;
+			    display: inline-table;
+			}
+
+			.tapiocas_salgadas tr {
+			    display: inline-table;
+			    padding: 30px 30px;
+			}
+
+			.tapiocas_salgadas div {
+				width: 280px;
+				height: 200px;
+			}
+
+
+			/* Tapiocas doces */
+			.tapiocas_doces table {
+			    width: 100%;
+			    text-align: center;
+			    margin-top: 50px;
+			    display: inline-table;
+			}
+
+			.tapiocas_doces tr {
+			    display: inline-table;
+			    padding: 30px 30px;
+			}
+
+			.tapiocas_doces div {
+				width: 280px;
+				height: 200px;
+			}
+
+			button {
+				background-color: #C56B34;
+	       		border: 1px solid transparent;
+        		color: black;
+        		text-align: center;
+          		border-radius: 20px;
+          		height: 30px;
+          		width: 100px;
+          		font-size: 14px;
+          		font-weight: bold;
+				-moz-transform: all 0.4s;
+				-webkit-transform: all 0.4s;
+				transition: all 0.4s;		    			
+			}
+
+			button:hover {
+				-moz-transform: scale(0.1);
+				-webkit-transform: scale(0.1);
+				transform: scale(1.1);
+			}
+
+			/* Imagens ilustrativas */
+			.borda {
+				background-color: #fff;
+	       		border: 2px solid transparent;
+          		border-radius: 15%;
+			}
+
+			.imagens {
+				margin-top: -50px;
+				margin-left: 20px;
+				float: right;
+			}			
+		
+			/* Monte sua tapioca checkbox Massas */
+			.monte_sua_tapioca {
+			    width: 100%;
+			    margin: auto;
+			    margin-top: 50px;
+			    margin-bottom: 50px;
+			    display: inline-table;
+			    text-align: center;
+			}
+
+			.checkbox_imagens {
+				display: inline-flex;
+				text-align: left;
+			}			
+
+			.checkbox_rc {
+				display: inline-flex;
+				text-align: left;
+			}
+
+			.monte_sua_tapioca table  {
+				display: inline-flex; 
+				text-align: left;
+			}
+
+			.monte_sua_tapioca td {
+				display: inline-table;
+			    padding: 0px 20px;
+			}
+
+			.titulo_checkbox {
+				margin-left: 23px;
+			}
+
+			.checkbox_sabores {
+				margin-left: 20px;
+			}
+
+			.valores_massa_salgados {
+				font-size: 17.5px;
+			}
+
+			.valores_massa_doces {
+				margin-left: 20px;
+				font-size: 17.5px;
+			}
+
+			/* Monte sua tapioca checkbox Recheios */
+			.checkbox_recheios {
+				height: 480px;				
+			}
+
+			.checkbox_rcsalgados {
+				margin-left: 20px;
+				text-align: left;
+			}
+
+			.valores_rcsalgados {
+				font-size: 17.5px;
+			}
+
+			.checkbox_recheios_doces {
+				margin-left: 20px;
+			}
+
+			.valores_rcdoces {
+				font-size: 17.5px;
+			}
+
+			.doces_titulo {
+				color: #fff;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<header class="cabeçalho"> <!--cabeçalho-->
+			<a href="Pagina_inicial.html"> <img class="Logo" src="Rodapé_Cabeçalho/Logo.png" height="110" width="230"> </a>
+
+			<div class="icones">
+				<ul>
+					<li>
+						<form action="Cardapio.html">
+							<input class="botao" type="submit" value="Cardápio">
+						</form>
+					</li>
+
+					<li class="carrinho">
+						<a href="carrinho.php"> <img src="Rodapé_Cabeçalho/carrinho.png" height="28" width="28"> </a>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+
+	    	<article>
+	    		<footer class="promoção_titulo">
+	    			<table class="titulo">
+			    		<td><img class="promo_img1" src="Cardápio/Promoção/bauru_segunda.png" height="100" width="150"></td>  		
+					    <td class="tx"> Promoção do dia </td>		     
+					    <td class="tx"> R$7,00 </td>
+			    		<td><img class="promo_img2" src="Cardápio/Promoção/romeu_e_julieta_sabado.png" height="100" width="150"></td>
+			    	</table>
+		    	</footer>	
+	    	</article>
+		
+			<section class="slide">
+				<div class="itens">
+					<div class="txt">
+						<p> Segunda-feira </p>
+						<img src="Cardápio/Promoção/bauru_segunda.png" height="130" width="200">
+						<p> Bauru </p>
+					</div>
+					<div class="txt">
+						<p> Terça-feira </p>							
+				    	<img src="Cardápio/Promoção/coco_com_chocolate_terça.png" height="130" width="200">
+				    	<p> Coco com chocolate </p>
+			    	</div>
+			    	<div class="txt">		
+						<p> Quarta-feira </p>
+				    	<img src="Cardápio/Promoção/frango_com_cheddar_quarta.png" height="130" width="200">
+				    	<p> Frango com cheddar </p>
+			    	</div>
+			    	<div class="txt">
+						<p> Quinta-feira </p>
+				    	<img src="Cardápio/Promoção/doce_de_leite_quinta.png" height="130" width="200">
+				    	<p> Doce de leite </p>
+			    	</div>
+			    	<div class="txt">	
+				    	<p> Sexta-feira </p>   	
+				    	<img src="Cardápio/Promoção/pizza_sexta.png" height="130" width="200">
+				    	<p> Pizza </p>
+			    	</div>
+			    	<div class="txt">
+				    	<p> Sábado-feira </p>		    	
+				    	<img src="Cardápio/Promoção/romeu_e_julieta_sabado.png" height="130" width="200">
+				    	<p> Romeu e Julieta </p>
+			    	</div>	
+			    	<div class="txt">
+				    	<p> Domingo-feira </p>	    	
+				    	<img src="Cardápio/Promoção/salame_domingo.png" height="130" width="200">
+				    	<p> Salame </p>
+			    	</div>
+				</div>
+			</section>
+
+	    	<article>
+	    		<footer class="promoção_titulos">
+	    			<table class="titulos">
+			    		<td><img class="promo_img1" src="Cardápio/Promoção/bauru_segunda.png" height="100" width="150"></td>  		
+					    <td class="tx1"> Tapiocas Salgadas </td>		     
+					    <td class="tx1"> R$10,00 </td>
+			    		<td><img class="promo_img2" src="Cardápio/Promoção/romeu_e_julieta_sabado.png" height="100" width="150"></td>
+			    	</table>
+		    	</footer>	
+	    	</article>
+
+	    	<article class="tapiocas_salgadas">
+	    		<table>   			
+	    			<td> 
+			    		<div>
+			    			<img src="Cardápio/Salgadas/bauru.png" height="130" width="200">
+			    			<p> Bauru </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z1.php" type="submit"> 
+								<button  class="btn bg-blue fs-it-btn">				           
+									<span class="fs-it-btn-vertical-line"></span>
+									adicionar
+									<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+								</button>
+		    				</form>
+			    		</div>
+		    		</td>    			
+	    			<td>  
+			    		<div>
+			    			<img src="Cardápio/Salgadas/calabresa_com_catupiry.png" height="130" width="200">
+			    			<p> Calabresa com Catupiry </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z2.php" type="submit"> 
+					        <button action="z2.php" type="submit" type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+							</form>
+			    		</div>
+	    			</td>    			
+	    			<td> 
+			    		<div>
+			    			<img src="Cardápio/Salgadas/frango_catupiry.png" height="130" width="200">
+			    			<p> Frango com Catupiry e Mussarela </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z3.php" type="submit"> 
+					        <button  action="z3.php" type="submit" type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+						</form>
+			    		</div>
+	    			</td>				    	    			    			  			
+	    		</table>				    			
+			</article>
+
+	    	<article class="tapiocas_salgadas">
+	    		<table>    			
+	    			<td>
+			     		<div>
+			    			<img src="Cardápio/Salgadas/frango_com_cheddar.png" height="130" width="200">
+			    			<p> Frango com Cheddar </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z4.php" type="submit">
+					        <button action="z4.php" type="submit"type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>		    			
+			    		</div>
+	    			</td>    			
+	    			<td>
+			    		<div>
+			    			<img src="Cardápio/Salgadas/light.png" height="130" width="200">
+			    			<p> Light (Queijo Fresco, Peito de Peru e Tomate) </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z5.php" type="submit">
+					        <button action="z5.php" type="submit" type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>
+			    		</div>
+			    	</td>    			
+	    			<td>
+			    		<div>
+			    			<img src="Cardápio/Salgadas/pizza.png" height="130" width="200">
+			    			<p> Pizza </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z6.php" type="submit" >
+					        <button action="z6.php" type="submit" type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>
+			    		</div>
+			    	</td>			    	    			    			  			
+	    		</table>				    			
+			</article>
+
+	    	<article class="tapiocas_salgadas">
+	    		<table>    			
+	    			<td>
+			    		<div>
+			    			<img src="Cardápio/Salgadas/queijo_coalho.png" height="130" width="200">
+			    			<p> Queijo Coalho </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z7.php" type="submit" >
+					        <button action="z7.php" type="submit" type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>
+			    		</div>
+			    	</td>    			
+	    			<td>
+			    		<div>
+			    			<img src="Cardápio/Salgadas/salame.png" height="130" width="200">
+			    			<p> Salame com Catupiry </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z8.php" type="submit" >
+					        <button action="z8.php" type="submit" type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>
+			    		</div> 
+			    	</td>    			
+	    			<td>
+			    		<div>
+			    			<img src="Cardápio/Salgadas/tres_queijos.png" height="130" width="200">
+			    			<p> 3 Queijos (Mussarela, Catupiry e Provolone) </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z9.php" type="submit" >
+					        <button action="z9.php" type="submit" type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>
+			    		</div>
+			    	</td>				    	    			    			  			
+	    		</table>				    			
+			</article>
+
+	    	<article>
+	    		<footer class="promoção_titulos">
+	    			<table class="titulos">
+			    		<td><img class="promo_img1" src="Cardápio/Promoção/bauru_segunda.png" height="100" width="150"></td>  		
+					    <td class="tx1"> Tapiocas Doces </td>		     
+					    <td class="tx1"> R$11,00 </td>
+			    		<td><img class="promo_img2" src="Cardápio/Promoção/romeu_e_julieta_sabado.png" height="100" width="150"></td>
+			    	</table>
+		    	</footer>	
+	    	</article>
+
+	    	<article class="tapiocas_doces">
+	    		<table>    			
+	    			<td> 
+			    		<div>
+			    			<img src="Cardápio/doces/banana_com_canela_e_leite_condensado.png" height="130" width="200">
+			    			<p> Banana com Canela e Leite Condensado </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form  action="z10.php" type="submit" >
+					        <button  action="z10.php" type="submit" type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>
+			    		</div>
+		    		</td>    			
+	    			<td>  
+			    		<div>
+			    			<img src="Cardápio/doces/banana_com_chocolate.png" height="130" width="200">
+			    			<p> Banana com Chocolate </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z11.php" type="submit">
+					        <button action="z11.php" type="submit"  type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+						</form>
+			    		</div>
+	    			</td>    			
+	    			<td> 
+			    		<div>
+			    			<img src="Cardápio/doces/chocolate_com_castanha_de_caju.png" height="130" width="200">
+			    			<p> Chocolate com Castanha de Caju </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z12.php" type="submit" >
+					        <button action="z12.php" type="submit"  type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+						</form>
+			    		</div>
+	    			</td>				    	    			    			  			
+	    		</table>				    			
+			</article>
+
+	    	<article class="tapiocas_doces">
+	    		<table>    			
+	    			<td>
+			     		<div>
+			    			<img src="Cardápio/doces/coco_com_amendoim_e_leite_condensado.png" height="130" width="200">
+			    			<p> Coco com Amendoim e leite Condensado </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form  action="z13.php" type="submit" >
+					        <button  action="z13.php" type="submit" type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>		    			
+			    		</div>
+	    			</td>    			
+	    			<td>
+			    		<div>
+			    			<img src="Cardápio/doces/coco_com_chocolate.png" height="130" width="200">
+			    			<p> Coco com Chocolate </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z14.php" type="submit"  >
+					        <button action="z14.php" type="submit"  type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>
+			    		</div>
+			    	</td>    			
+	    			<td>
+			    		<div>
+			    			<img src="Cardápio/doces/coco_com_goiabada.png" height="130" width="200">
+			    			<p> Coco com Goiabada </p>
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">	
+		    				<form action="z15.php" type="submit"  >
+					        <button action="z15.php" type="submit"  type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>
+			    		</div>
+			    	</td>			    	    			    			  			
+	    		</table>				    			
+			</article>
+
+	    	<article class="tapiocas_doces">
+	    		<table>    			
+	    			<td>
+			    		<div>
+			    			<img src="Cardápio/doces/coco_com_leite_condensado.png" height="130" width="200">
+			    			<p> Coco com Leite Condensado </p>	
+		    				<form  action="z16.php" type="submit" >
+					        <button  action="z16.php" type="submit" type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>
+			    		</div>
+			    	</td>    			
+	    			<td>
+			    		<div>
+			    			<img src="Cardápio/doces/coco_com_polpa_de_maracuja_e_leite_condensado.png" height="130" width="200">
+			    			<p> Coco com Polpa de Maracujá e Leite Condensado </p>	
+		    				<form action="z17.php" type="submit" >
+					        <button action="z17.php" type="submit"  type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					           	Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>
+			    		</div> 
+			    	</td>    			
+	    			<td>
+			    		<div>
+			    			<img src="Cardápio/doces/coco_com_polpa_de_morango_e_leite_condensado.png" height="130" width="200">
+			    			<p> Coco com Polpa de Morango e Leite Condensado </p>	
+		    				<form  action="z18.php" type="submit">
+					        <button  action="z18.php" type="submit" type="button" class="btn bg-blue fs-it-btn">				           
+					            <span class="fs-it-btn-vertical-line"></span>
+					            Adicionar
+					            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					        </button>
+		    				</form>
+			    		</div>
+			    	</td>				    	    			    			  			
+	    		</table>				    			
+			</article>
+
+	    	<article>
+	    		<footer class="promoção_titulos">
+	    			<table class="titulos">
+			    		<td><img class="promo_img1" src="Cardápio/Promoção/bauru_segunda.png" height="100" width="150"></td>  		
+					    <td class="tx1"> Monte sua tapioca </td>		     
+			    		<td><img class="promo_img2" src="Cardápio/Promoção/romeu_e_julieta_sabado.png" height="100" width="150"></td>
+			    	</table>
+		    	</footer>	
+	    	</article>
+
+	    	<article class="monte_sua_tapioca">
+	    		<article class="checkbox_imagens">
+					<article class="checkbox_massas">
+						<b> Massas </b>
+						<p class="titulo_checkbox"><b> Salgadas </b></p>
+						<table>
+							<td>
+								<article class="checkbox_sabores" >					
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Tradicional </label> 
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Cenoura </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Abóbora </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Beterraba </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Mandioquinha </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Milho Verde </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Ervilha </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Batata Doce </label>
+									</div>
+								</article>
+							</td>
+
+							<td>
+								<article class="valores_massa_salgados" >			  
+									 <label> R$ 3,00 </label> <br>
+									 <label> R$ 3,00 </label> <br>
+									 <label> R$ 3,00 </label> <br>
+									 <label> R$ 3,00 </label> <br>
+									 <label> R$ 3,00 </label> <br>
+									 <label> R$ 3,00 </label> <br>
+									 <label> R$ 3,00 </label> <br>
+									 <label> R$ 3,00 </label> 	
+								</article>						
+							</td>
+						</table>
+
+					    <article class="imagens">
+							<img class="borda" src="Cardápio/sabores_tapiocas.jpeg" height="200" width="400">   	
+				    	</article>		    														
+					</article>
+			    </article>
+
+			    <br>
+
+			    <article class="checkbox_imagens">
+					<article class="checkbox_massas">
+						<p class="titulo_checkbox"><b> Doces </b></p>
+						<table>
+							<td>
+								<article class="checkbox_sabores" >				
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Tradicional </label> 
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Chocolate </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Açaí </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Amendoim </label>
+									</div>
+									<div>
+								</article>						
+							</td>
+
+							<td>
+								<article class="valores_massa_doces" >			  
+									 <label> R$ 3,00 </label> <br>
+									 <label> R$ 3,00 </label> <br>
+									 <label> R$ 3,00 </label> <br>
+									 <label> R$ 3,00 </label>	
+								</article>						
+							</td>
+						</table>
+					    <article class="imagens">
+				    		<img class="borda" src="Cardápio/imagem_ilustrativa.jfif" height="200" width="400">   	
+				    	</article>												
+					</article>				
+				</article>
+
+				<br>
+
+				<article class="checkbox_rc">
+					<article class="checkbox_recheios">
+						<b> Recheios </b>
+						<p class="titulo_checkbox"><b> Salgados </b></p>
+						<table>
+							<td>
+								<article class="checkbox_rcsalgados">
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Bacon </label> 
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Calabresa </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Carne (desfiada) </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Carne Seca </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Catupiry </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Cheddar </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Cream Cheese </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Ervilha </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Frango </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Milho </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Orégano </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Peito de Peru </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Presunto </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Provolone </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Queijo Branco </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Queijo Mussarela </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Salame </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Tomate </label>
+									</div>
+								</article>	
+							</td>
+
+							<td>
+								<article class="valores_rcsalgados" >			  
+									 <label> R$ 2,50 </label> <br>
+									 <label> R$ 2,50 </label> <br>
+									 <label> R$ 2,50 </label> <br>
+									 <label> R$ 2,50 </label> <br>
+									 <label> R$ 2,50 </label> <br>
+									 <label> R$ 2,00 </label> <br>
+									 <label> R$ 2,50 </label> <br>
+									 <label> R$ 1,50 </label> <br>
+									 <label> R$ 2,50 </label> <br>
+									 <label> R$ 1,50 </label> <br>
+									 <label> R$ 0,50 </label> <br>
+									 <label> R$ 2,00 </label> <br>
+									 <label> R$ 2,00 </label> <br>
+									 <label> R$ 2,50 </label> <br>
+									 <label> R$ 2,00 </label> <br>
+									 <label> R$ 2,00 </label> <br>
+									 <label> R$ 2,50 </label> <br>
+									 <label> R$ 1,50 </label> 	
+								</article>
+							</td>
+						</table>							
+					</article>
+				</article>
+
+				<article class="checkbox_rc">
+					<article class="checkbox_recheios_dc">
+						<b class="doces_titulo"> Recheios </b>
+						<p class="titulo_checkbox"><b> Doces </b></p>
+						<table>
+							<td>
+								<article class="checkbox_recheios_doces">			
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Abacaxi </label> 
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Amendoim </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Banana </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Creme de Leite Ninho </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Castanha de Caju </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Chocolate Branco </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Chocolate Preto </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Coco </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Doce de Leite </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Leite Condensado </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> M&M's </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Morango </label>
+									</div>
+									<div>
+									  <input type="checkbox" name="horns">
+									  <label for="horns"> Polpa de Maracujá </label>
+									</div>
+								</article>
+							</td>
+
+							<td>
+								<article class="valores_rcdoces" >			  
+									<label> R$ 2,00 </label> <br>
+									<label> R$ 2,00 </label> <br>
+									<label> R$ 2,00 </label> <br>
+									<label> R$ 2,50 </label> <br>
+									<label> R$ 2,50 </label> <br>
+									<label> R$ 2,00 </label> <br>
+									<label> R$ 2,00 </label> <br>
+									<label> R$ 2,00 </label> <br>
+									<label> R$ 2,00 </label> <br>
+									<label> R$ 2,00 </label> <br>
+									<label> R$ 2,50 </label> <br>
+									<label> R$ 2,50 </label> <br>
+									<label> R$ 2,00 </label> 	
+								</article>
+							</td>
+						</table>							
+					</article>
+				</article>
+			</article>
+
+		<footer class="rodape"> <!-- rodapé -->
+				<article>
+					<b> Localização: </b>
+					<br>
+					Ponto Pinheiros - Próximo ao metrô Pinheiros
+					<br>
+					R. Cunha Gago, 590
+					<br><br>
+					<b> Horários de Funcionamento: </b>
+					<br>
+					Horário de Almoço:
+					<br>
+					Terça à Sexta das 12h às 14h30.
+					<br>
+					Sábados e Domingos das 13h às 16h.
+					<br><br>
+					Horário de Janta:
+					<br>
+					Terça à Sexta das 18h30 às 21h30
+					<br>
+					Sábados e Domingos das 18h30 às 21h30										
+				</article>
+
+				<article>
+					<img class="whatsapp" src="Rodapé_Cabeçalho/whatsapp.png" height="36" width="38" align="left">
+					<table class="tel">
+						<tr>  </tr>
+						<td> (11) 96528-9741 </td>
+					</table>
+					<br>
+					Tem alguma sugestão? Quer mandar seu
+					currículo?<br>
+					Envie para: ponto@pontodatapioca.com
+					<br><br>
+					Quer o Ponto da Tapioca no seu evento?
+					<br>
+					Escreve pra nós, em<br>
+					eventos@pontodatapioca.com
+				</article>	
+		</footer>
+
+		<article class="direitos">
+			<p> © copyright Ponto da Tapioca - all rights reserved - since 2021 </p>	
+		</article>
+	</body>
+</html>
